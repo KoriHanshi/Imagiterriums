@@ -1,0 +1,22 @@
+<p><a routerLink="/">Home</a> | <a routerLink="/about">About</a></p>
+
+<h1>{{name}}</h1>
+<p><strong>Email:</strong> {{email}}</p>
+<p><strong>Address:</strong> {{address.street}} {{address.city}}, {{address.state}}</p>
+<div *ngIf="showHobbies">
+    <h3>Hobbies</h3>
+    <ul>
+        <li *ngFor="let h of hobbies; let i = index">
+            {{h}} <button (click)="deleteHobby(i)">x</button>
+        </li>
+    </ul>
+    <form (submit)="addHobby(hobby.value)">
+        <input type="text" #hobby />
+    </form>
+</div>
+<button (click)="toggleHobbies()">{{showHobbies ? "Hide" : "Show"}} Hobbies</button>
+<hr />
+<div *ngFor="let p of posts">
+    <h3>{{p.title}}</h3>
+    <p>{{p.body}}</p>
+</div>
